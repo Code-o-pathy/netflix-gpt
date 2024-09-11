@@ -1,7 +1,7 @@
 # Step by Step
 --create-react-app
 --tailwind installation
-
+--Sign In & Sign In Form
 
 
 # Goal
@@ -23,6 +23,13 @@
 
 
 
+
+
+
+Notes:
+When u have big forms in react use Formix.
+--ref
+ whenever u use ref for some input box it gives the whole input box with its classes and all, and its a large object, so u can get the value by doing object.current.value
 
 
 
