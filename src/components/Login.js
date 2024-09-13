@@ -1,22 +1,82 @@
 import React, { useRef, useState } from "react";
 import Header from "./Header";
-import { checkValidation } from "../utils/validate";
+import { checkValidation, nameValidation } from "../utils/validate";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
 const Login = () => {
+  const navigate=useNavigate();
   const [isSignIn, setIsSignIn] = useState(true);
   const [outputMessage, setOutputMessage] = useState("");
   const handleSign = () => {
     setIsSignIn(!isSignIn);
   };
+  const name = useRef();
   const email = useRef();
   const password = useRef();
   const handleSubmit = () => {
-    const message = checkValidation(
-      email.current.value,
-      password.current.value
-    );
-    console.log(password.current.value)
-    setOutputMessage(message);
+    let message = "";
+    if (isSignIn) {
+      message = checkValidation(email.current.value, password.current.value);
+      // console.log(email.current.value);
+      // console.log(password.current.value);
+      setOutputMessage(message);
+    } else {
+      const message = nameValidation(
+        name.current.value,
+        email.current.value,
+        password.current.value
+      );
+      setOutputMessage(message);
+    }
+    if (message) return;
+    if (!isSignIn) {  
+      //sign up lo gic
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          console.log("user")
+          console.log(user)
+          navigate("/browse")
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setOutputMessage(errorCode+"-"+errorMessage)
+          // ..
+        });
+    } else {
+      //sign in logic
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log("signin-user");
+          console.log(user);
+          navigate("/browse")
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setOutputMessage(errorCode+"-"+errorMessage)
+        });
+    }
   };
+
   return (
     <>
       <img
@@ -38,6 +98,7 @@ const Login = () => {
         </h1>
         {!isSignIn && (
           <input
+            ref={name}
             type="text"
             placeholder="Full Name"
             className="p-2 my-4  rounded-sm bg-gray-700 w-full "
@@ -56,12 +117,11 @@ const Login = () => {
           className="p-2 my-4  rounded-sm bg-gray-700 w-full "
         />
         {outputMessage && <p className="text-red-500">{outputMessage}</p>}
-        {outputMessage==null && <p className="text-green-300">Successfull</p>}
+        {outputMessage == null && <p className="text-green-300">Successfull</p>}
         <button
           className="bg-red-700 py-2  my-4  w-full"
           onClick={handleSubmit}
         >
-          {" "}
           {isSignIn ? "Sign In" : "Sign Up"}
         </button>
         <p onClick={handleSign} className="py-2  my-4  w-full cursor-pointer">

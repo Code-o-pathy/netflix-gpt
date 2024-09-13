@@ -1,141 +1,47 @@
 # Step by Step
+
 --create-react-app
 --tailwind installation
 --Sign In & Sign In Form
-
+--deploy to firebase
+--authentication
+--redux store.
 
 # Goal
+
 --Netflix login page
-    --sign in/up form
-    -- redirect to browse page
+--sign in/up form
+-- redirect to browse page
 
 --Netflix browse (after authentication)
-    --Header
-    --Main movie
-         --trailer in bg
-         --title and description
-         --Movie suggestion
-              --movie list * N
+--Header
+--Main movie
+--trailer in bg
+--title and description
+--Movie suggestion
+--movie list \* N
 
 --Netflix GPT
-    --search for
-    --movie suggestion
-
-
-
-
-
+--search for
+--movie suggestion
 
 Notes:
 When u have big forms in react use Formix.
 --ref
- whenever u use ref for some input box it gives the whole input box with its classes and all, and its a large object, so u can get the value by doing object.current.value
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+whenever u use ref for some input box it gives the whole input box with its classes and all, and its a large object, so u can get the value by doing object.current.value
+
+-deploying using firebase
+--first go to firebase sign in and create a project,
+--do web app settings and create authentication(optional )
+--in project, install firebase
+-- npm i firebase
+--npm i -g firebase-tools
+--firebase login
+--firebase init (do some settings in it)
+--firebase deploy
+
+--navigating in same component as of router provider?
+//we cant use navigate here because this is the parent component of routerprovider, and all pages are child of this component, so if u want to use navigate here you would have to shift router provider on app level, second it to usenormaal redirection without navigate and other ssolution is to use navigate from child components
 
 
 
