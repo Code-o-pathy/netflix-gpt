@@ -4,11 +4,15 @@ import { checkValidation, nameValidation } from "../utils/validate";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
 const Login = () => {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [isSignIn, setIsSignIn] = useState(true);
   const [outputMessage, setOutputMessage] = useState("");
   const handleSign = () => {
@@ -33,7 +37,7 @@ const Login = () => {
       setOutputMessage(message);
     }
     if (message) return;
-    if (!isSignIn) {  
+    if (!isSignIn) {
       //sign up lo gic
       createUserWithEmailAndPassword(
         auth,
@@ -43,15 +47,29 @@ const Login = () => {
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
-          console.log("user")
-          console.log(user)
-          navigate("/browse")
+          updateProfile(user, {
+            displayName: name.current.value,
+            photoURL:
+              "https://avatars.githubusercontent.com/u/118040049?s=400&u=1978d96fd3ce8eee41a1d899bbd8f204ed20570c&v=4",
+          }).then(() => {
+            const { uid, displayName, email, photoURL } = auth.currentUser;
+            dispatch(
+              addUser({
+                uid: uid,
+                displayName: displayName,
+                email: email,
+                photo: photoURL,
+              })
+            );
+            navigate("/browse");
+          });
+
           // ...
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          setOutputMessage(errorCode+"-"+errorMessage)
+          setOutputMessage(errorCode + "-" + errorMessage);
           // ..
         });
     } else {
@@ -66,13 +84,13 @@ const Login = () => {
           const user = userCredential.user;
           console.log("signin-user");
           console.log(user);
-          navigate("/browse")
+          navigate("/browse");
           // ...
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          setOutputMessage(errorCode+"-"+errorMessage)
+          setOutputMessage(errorCode + "-" + errorMessage);
         });
     }
   };
@@ -80,7 +98,7 @@ const Login = () => {
   return (
     <>
       <img
-        className="absolute  z-[-1]"
+        className="absolute  z-[-1] "
         src="https://assets.nflxext.com/ffe/siteui/vlv3/04bef84d-51f6-401e-9b8e-4a521cbce3c5/null/IN-en-20240903-TRIFECTA-perspective_0d3aac9c-578f-4e3c-8aa8-bbf4a392269b_medium.jpg"
         alt="background"
       />
@@ -90,7 +108,7 @@ const Login = () => {
         onSubmit={(e) => {
           e.preventDefault();
         }}
-        className="bg-black absolute my-36 mx-auto right-0  left-0  w-3/12 p-12  text-white py-4 bg-opacity-80 rounded-sm "
+        className="bg-black absolute my-[70px] mx-auto right-0  left-0  w-3/12 p-12  text-white py-4 bg-opacity-80 rounded-sm "
       >
         <h1 className="text-3xl  py-4 font-bold">
           {" "}
