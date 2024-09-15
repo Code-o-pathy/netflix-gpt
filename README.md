@@ -8,6 +8,10 @@
 --redux store.
 --validations sign sign out
 --navigation
+--bug fix of unauthroised access by going on /browse.
+--tmdb account sign up for API key.
+--fetching data 
+
 
 # Goal
 
@@ -42,11 +46,14 @@ whenever u use ref for some input box it gives the whole input box with its clas
 --firebase init (do some settings in it)
 --firebase deploy
 
+
 --navigating in same component as of router provider?
 //we cant use navigate here because this is the parent component of routerprovider, and all pages are child of this component, so if u want to use navigate here you would have to shift router provider on app level, second it to usenormaal redirection without navigate and other ssolution is to use navigate from child components
 
 
 --he is getting user name because he used update profile and there he gave current name;
+
+--react strictmode often makes few multiple calls to check for the consistency of the calls. Its a good thing. 
 
 
 

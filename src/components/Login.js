@@ -9,8 +9,14 @@ import {
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addUser } from "../utils/userSlice";
+import { addUser } from "../utils/userSlice"; 
+import { PhotoURL } from "../utils/constants";
+import { homeBackground } from "../utils/constants";
 const Login = () => {
+  // const userStore = useSelector((store) => store.user);
+  // if(userStore){
+  //   navigate("/browse");
+  // }
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isSignIn, setIsSignIn] = useState(true);
@@ -43,14 +49,13 @@ const Login = () => {
         auth,
         email.current.value,
         password.current.value
-      )
-        .then((userCredential) => {
+      ).then((userCredential) => {
           // Signed up
           const user = userCredential.user;
           updateProfile(user, {
             displayName: name.current.value,
             photoURL:
-              "https://avatars.githubusercontent.com/u/118040049?s=400&u=1978d96fd3ce8eee41a1d899bbd8f204ed20570c&v=4",
+              PhotoURL,
           }).then(() => {
             const { uid, displayName, email, photoURL } = auth.currentUser;
             dispatch(
@@ -61,7 +66,6 @@ const Login = () => {
                 photo: photoURL,
               })
             );
-            navigate("/browse");
           });
 
           // ...
@@ -99,7 +103,7 @@ const Login = () => {
     <>
       <img
         className="absolute  z-[-1] "
-        src="https://assets.nflxext.com/ffe/siteui/vlv3/04bef84d-51f6-401e-9b8e-4a521cbce3c5/null/IN-en-20240903-TRIFECTA-perspective_0d3aac9c-578f-4e3c-8aa8-bbf4a392269b_medium.jpg"
+        src={homeBackground}
         alt="background"
       />
       <Header />
