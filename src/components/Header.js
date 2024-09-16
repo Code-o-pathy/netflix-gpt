@@ -52,7 +52,7 @@ const Header = () => {
     return()=>unsubscribe();
   }, []);
   return (
-    <div className="w-screen bg-gradient-to-b from-black flex justify-between items-center">
+    <div className=" w-screen bg-gradient-to-b from-black flex justify-between items-center">
       <img
         className=" w-44"
         src={Logo}
