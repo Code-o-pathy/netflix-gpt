@@ -52,14 +52,14 @@ const Header = () => {
     return()=>unsubscribe();
   }, []);
   return (
-    <div className=" w-screen bg-gradient-to-b from-black flex justify-between items-center">
+    <div className="w-full bg-gradient-to-b from-black flex justify-between items-center  absolute z-10">
       <img
-        className=" w-44"
+        className="w-44 overflow-x-scroll"
         src={Logo}
         alt="logo"
       />
       {user && (
-        <div className="flex mr-2">
+        <div className="flex mr-4">
           <img className="w-[50px]" alt="userIcon" src={user.photo} />
           <button
             className="bg-red-100 p-2 rounded-sm m-1"

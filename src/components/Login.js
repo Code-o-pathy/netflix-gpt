@@ -28,20 +28,19 @@ const Login = () => {
   const email = useRef();
   const password = useRef();
   const handleSubmit = () => {
-    let message = null;
-    if (isSignIn) {
-      message = checkValidation(email.current.value, password.current.value);
+    // if (isSignIn) {
+      const message = checkValidation(email.current.value, password.current.value);
       // console.log(email.current.value);
       // console.log(password.current.value);
       setOutputMessage(message);
-    } else {
-      const message = nameValidation(
-        name.current.value,
-        email.current.value,
-        password.current.value
-      );
-      setOutputMessage(message);
-    }
+    // } else {
+    //   const message = nameValidation(
+    //     name.current.value,
+    //     email.current.value,
+    //     password.current.value
+    //   );
+    //   setOutputMessage(message);
+    // }
     if (message) return;
     if (!isSignIn) {
       //sign up lo gic
@@ -102,7 +101,7 @@ const Login = () => {
   return (
     <>
       <img
-        className="absolute  z-[-1] "
+        className="absolute w-screen "
         src={homeBackground}
         alt="background"
       />
@@ -112,7 +111,7 @@ const Login = () => {
         onSubmit={(e) => {
           e.preventDefault();
         }}
-        className="bg-black absolute my-[70px] mx-auto right-0  left-0  w-3/12 p-12  text-white py-4 bg-opacity-80 rounded-sm "
+        className="bg-black absolute my-[110px] mx-auto right-0  left-0  w-3/12 p-12  text-white py-4 bg-opacity-80 rounded-sm "
       >
         <h1 className="text-3xl  py-4 font-bold">
           {" "}
