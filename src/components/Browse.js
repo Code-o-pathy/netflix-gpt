@@ -1,39 +1,35 @@
 import React from "react";
 import Header from "./Header";
-import { useNowPlayingMovies} from "../hooks/useNowPlayingMovies";
+import { useNowPlayingMovies } from "../hooks/useNowPlayingMovies";
 import { usePopularMovies } from "../hooks/usePopularMovies";
 import MainContainer from "./MainContainer";
 import SecondContainer from "./SecondContainer";
 import { useTrendingMovies } from "../hooks/useTrendingMovies";
+import GPTSearch from "./GPTHome";
+import { useSelector } from "react-redux";
 
 const Browse = () => {
+  const showStatus = useSelector((state) => state.gpt.showGptSearch);
+
   useNowPlayingMovies();
   usePopularMovies();
   useTrendingMovies();
   return (
-    <div className="w-full   ">
+    <div className="w-full    ">
       <Header />
-      <MainContainer/>
-      <SecondContainer/>
+      {showStatus ? (
+        <GPTSearch />
+      ) : (
+        <>
+          <MainContainer />
+          <SecondContainer />
+        </>
+      )}
     </div>
   );
 };
 
 export default Browse;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // const Browse = () => {
 // const navigate=useNavigate();
