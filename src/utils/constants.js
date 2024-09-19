@@ -16,5 +16,5 @@ export const API_OPTIONS = {
 
 export const IMAGE_URL="https://image.tmdb.org/t/p/w220_and_h330_face";
 
-export const OPENAI_KEY="sk-XWQUsWK5A2xESngJAOlvY-NVaIRtp0GD5Yls5tKjKtT3BlbkFJ9xSEjG3UNgYw6FEQ0HeIZuoaFuvx6AM7MPZPqnrZ8A"
-export const GEMINI_KEY="AIzaSyAeuD85mig89hbhgy9KEoVrd929WB9_YqY";
+// export const OPENAI_KEY="sk-XWQUsWK5A2xESngJAOlvY-NVaIRtp0GD5Yls5tKjKtT3BlbkFJ9xSEjG3UNgYw6FEQ0HeIZuoaFuvx6AM7MPZPqnrZ8A"
+// export const GEMINI_KEY="AIzaSyAeuD85mig89hbhgy9KEoVrd929WB9_YqY";
