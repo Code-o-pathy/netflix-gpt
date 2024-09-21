@@ -15,5 +15,4 @@ export const API_OPTIONS = {
 
 export const IMAGE_URL = "https://image.tmdb.org/t/p/w220_and_h330_face";
 
-export const OPENAI_KEY = process.env.REACT_APP_OPENAI_KEY;
 export const GEMINI_KEY = process.env.REACT_APP_GEMINI_KEY;
