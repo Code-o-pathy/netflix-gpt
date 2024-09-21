@@ -2,7 +2,6 @@ import React, { useRef } from "react";
 import { API_OPTIONS, homeBackground } from "../utils/constants";
 import lang from "../utils/lang";
 import { useDispatch, useSelector } from "react-redux";
-// import openAI from "../utils/openAI";
 import { GEMINI_KEY } from "../utils/constants";
 import { addSuggestedMovies } from "../utils/gptSlice";
 
