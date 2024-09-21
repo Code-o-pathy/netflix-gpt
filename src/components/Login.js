@@ -99,7 +99,7 @@ const Login = () => {
   };
 
   return (
-    <div className="w-screen">
+    <div className="w-screen  ">
       <img
         className="absolute w-screen h-screen object-cover"
         src={homeBackground}
@@ -111,10 +111,9 @@ const Login = () => {
         onSubmit={(e) => {
           e.preventDefault();
         }}
-        className="bg-black absolute my-[110px] mx-auto right-0  left-0  md:w-3/12 p-12  text-white py-4 bg-opacity-80 rounded-sm "
+        className="bg-black absolute my-[150px] mx-auto right-0  left-0  md:w-3/12 p-12  text-white py-4 bg-opacity-80 rounded-sm "
       >
-        <h1 className="text-3xl  py-4 font-bold">
-          {" "}
+        <h1 className="md:text-3xl text-2xl py-2 md:py-4 md:mt-0  font-bold">
           {isSignIn ? "Sign In" : "Sign Up"}
         </h1>
         {!isSignIn && (
@@ -140,7 +139,7 @@ const Login = () => {
         {outputMessage && <p className="text-red-500">{outputMessage}</p>}
         {outputMessage == null && <p className="text-green-300">Successfull</p>}
         <button
-          className="bg-red-700 py-2  my-4  w-full"
+          className="bg-red-700 py-2  my-4  w-full rounded-sm"
           onClick={handleSubmit}
         >
           {isSignIn ? "Sign In" : "Sign Up"}

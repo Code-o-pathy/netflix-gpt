@@ -7,6 +7,7 @@ import SecondContainer from "./SecondContainer";
 import { useTrendingMovies } from "../hooks/useTrendingMovies";
 import GPTSearch from "./GPTHome";
 import { useSelector } from "react-redux";
+import { homeBackground } from "../utils/constants";
 
 const Browse = () => {
   const showStatus = useSelector((state) => state.gpt.showGptSearch);
@@ -16,13 +17,18 @@ const Browse = () => {
   useTrendingMovies();
   return (
     <div className="w-full    ">
+      <img
+        className="fixed w-screen h-screen object-cover z-0"
+        src={homeBackground}
+        alt="background"
+      />
       <Header />
       {showStatus ? (
         <GPTSearch />
       ) : (
         <>
           <MainContainer />
-          <SecondContainer />
+          <SecondContainer /> 
         </>
       )}
     </div>

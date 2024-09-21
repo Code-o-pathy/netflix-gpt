@@ -5,7 +5,7 @@ const MovieCard = ({poster}) => {
   if(!poster) return null;
   return (
     <div className='w-48 pr-4 rounded-lg'>
-        <img src={IMAGE_URL+poster} alt="movieCard" className=''/>
+        <img src={IMAGE_URL+poster} alt="movieCard" className='rounded-lg'/>
 
     </div>
   )

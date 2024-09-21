@@ -62,14 +62,14 @@ const Header = () => {
     return () => unsubscribe();
   }, []);
   return (
-    <div className="absolute w-full bg-gradient-to-b from-black flex justify-between items-center   z-10 flex-col md:flex-row ">
-      <img className="w-44 overflow-x-scroll mb-3" src={Logo} alt="logo" />
+    <div className=" absolute w-screen bg-gradient-to-b from-black flex justify-between items-center   z-40 flex-col md:flex-row ">
+      <img className="w-44  " src={Logo} alt="logo" />
       {user && (
-        <div className="flex mr-4">
+        <div className="flex">
           {gptState && (
             <select
               onChange={handleLanguage}
-              className="px-4 py-2 bg-purple-200  mx-2 rounded-md"
+              className="md:px-4 md:py-2 bg-purple-200  md:mx-2 rounded-md   px-2 mx-1"
             >
               {SUPPORTED_LANG.map((option) => (
                 <option key={option.identifier} value={option.identifier}>
@@ -80,17 +80,17 @@ const Header = () => {
           )}
           <button
             onClick={handleGPT}
-            className="px-4 py-2 bg-purple-400 mx-2 rounded-md"
+            className="md:px-4 md:py-2 bg-purple-400 md:mx-2 rounded-md px-2 mx-0"
           >
             {gptState ? <>Homepage</> : <>GPT Search</>}
           </button>
           <img
-            className="w-[70px] mx-2 rounded-md  md:w-[50px]"
+            className="w-[70px] md:mx-2 rounded-md  md:w-[50px]  md:px-0 px-2"
             alt="userIcon "
             src={user.photo}
           />
           <button
-            className="px-4   mx-2 bg-zinc-500 text-red-900 font-bold  rounded-md"
+            className="md:px-4   md:mx-2 bg-gray-300 text-red-600 font-bold  rounded-md px-2"
             onClick={handleSignOut}
           >
             Sign Out

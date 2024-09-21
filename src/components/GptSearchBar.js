@@ -58,7 +58,7 @@ const GptSearchBar = () => {
   };
 
   return (
-    <>
+    <div className="w-screen">
       <img
         className="fixed h-screen object-cover md:w-screen"
         src={homeBackground}
@@ -75,17 +75,17 @@ const GptSearchBar = () => {
             ref={searchText}
             type="text"
             placeholder={lang[language].searchBoxText}
-            className="mt-3 h-12 m-0 px-3 md:h-14 col-span-9 md:p-4 md:m-4 md:col-span-9 rounded-lg "
+            className="mt-3 h-12 m-0 px-3 md:h-14 col-span-8 md:p-4 md:m-4 md:col-span-9 rounded-md  "
           />
           <button
             onClick={handleGPTSearch}
-            className="px-3 md:px-4 py-2 bg-red-700 text-white md:text-2xl rounded-lg col-span-3  m-4"
+            className=" md:px-4 md:py-2 bg-red-700 text-white md:text-2xl rounded-lg md:col-span-3 col-span-4 md:m-4 md:ml-0 md:h-14  h-12 mb-2 ml-4 mt-3"
           >
             {lang[language].search}
           </button>
         </form>
       </div>
-    </>
+    </div>
   );
 };
 

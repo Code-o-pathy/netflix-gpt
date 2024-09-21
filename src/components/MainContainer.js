@@ -11,7 +11,7 @@ const MainContainer = () => {
 
 
   return (
-    <div>
+    <div className="w-screen pt-32">
       <VideoTitle title={original_title} overview={overview} />
       <VideoBg  movieId={id}/>
     </div>
