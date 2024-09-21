@@ -9,12 +9,11 @@ export const API_OPTIONS = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwNDlmNGE3MWZjMTViOWJlMTNhNThhYjU0YTAyMjY1MiIsIm5iZiI6MTcyNjM5MDY4Ny4wMjYyOTMsInN1YiI6IjY2ZTY5NzQ2ZTgyMTFlY2QyMmIwNmQ2MiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.NJd9fWs5vPwaXQzF3xd1udQ_QRib2L28aPQMd6jmapA",
-  },
+    Authorization: "Bearer "+process.env.REACT_APP_TMDB_KEY,
+  }
 };
 
-export const IMAGE_URL="https://image.tmdb.org/t/p/w220_and_h330_face";
+export const IMAGE_URL = "https://image.tmdb.org/t/p/w220_and_h330_face";
 
-// export const OPENAI_KEY="sk-XWQUsWK5A2xESngJAOlvY-NVaIRtp0GD5Yls5tKjKtT3BlbkFJ9xSEjG3UNgYw6FEQ0HeIZuoaFuvx6AM7MPZPqnrZ8A"
-// export const GEMINI_KEY="AIzaSyAeuD85mig89hbhgy9KEoVrd929WB9_YqY";
+export const OPENAI_KEY = process.env.REACT_APP_OPENAI_KEY;
+export const GEMINI_KEY = process.env.REACT_APP_GEMINI_KEY;

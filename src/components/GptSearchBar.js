@@ -50,36 +50,43 @@ const GptSearchBar = () => {
 
     const tmdbResult = await Promise.all(promiseArray);
     console.log(tmdbResult);
-    dispatch(addSuggestedMovies({movieNames:arrayOfMovies,suggestedMovies:tmdbResult}));
+    dispatch(
+      addSuggestedMovies({
+        movieNames: arrayOfMovies,
+        suggestedMovies: tmdbResult,
+      })
+    );
   };
 
   return (
-    <div className="pt-[15%] flex justify-center relative ">
+    <>
       <img
-        className="absolute -mt-[15%]"
+        className="fixed h-screen object-cover md:w-screen"
         src={homeBackground}
         alt="bgForGPTPage"
       />
-      <form
-        className="w-1/2  bg-black grid grid-cols-12 rounded-lg  z-10"
-        onSubmit={(e) => {
-          e.preventDefault();
-        }}
-      >
-        <input
-          ref={searchText}
-          type="text"
-          placeholder={lang[language].searchBoxText}
-          className="p-4 m-4 col-span-9 rounded-lg"
-        />
-        <button
-          onClick={handleGPTSearch}
-          className="px-4 py-2 bg-red-700 text-white text-2xl rounded-lg col-span-3  m-4"
+      <div className="pt-[55%] relative md:pt-[15%]  flex justify-center">
+        <form
+          className="md:w-1/2  md:p-1 px-2 py-1  grid grid-cols-12 bg-black rounded-lg  z-10"
+          onSubmit={(e) => {
+            e.preventDefault();
+          }}
         >
-          {lang[language].search}
-        </button>
-      </form>
-    </div>
+          <input
+            ref={searchText}
+            type="text"
+            placeholder={lang[language].searchBoxText}
+            className="mt-3 h-12 m-0 px-3 md:h-14 col-span-9 md:p-4 md:m-4 md:col-span-9 rounded-lg "
+          />
+          <button
+            onClick={handleGPTSearch}
+            className="px-3 md:px-4 py-2 bg-red-700 text-white md:text-2xl rounded-lg col-span-3  m-4"
+          >
+            {lang[language].search}
+          </button>
+        </form>
+      </div>
+    </>
   );
 };
 

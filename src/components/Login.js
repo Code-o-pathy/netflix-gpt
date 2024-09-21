@@ -99,9 +99,9 @@ const Login = () => {
   };
 
   return (
-    <>
+    <div className="w-screen">
       <img
-        className="absolute w-screen "
+        className="absolute w-screen h-screen object-cover"
         src={homeBackground}
         alt="background"
       />
@@ -111,7 +111,7 @@ const Login = () => {
         onSubmit={(e) => {
           e.preventDefault();
         }}
-        className="bg-black absolute my-[110px] mx-auto right-0  left-0  w-3/12 p-12  text-white py-4 bg-opacity-80 rounded-sm "
+        className="bg-black absolute my-[110px] mx-auto right-0  left-0  md:w-3/12 p-12  text-white py-4 bg-opacity-80 rounded-sm "
       >
         <h1 className="text-3xl  py-4 font-bold">
           {" "}
@@ -151,7 +151,7 @@ const Login = () => {
             : "Already a User? Sign In Now!"}
         </p>
       </form>
-    </>
+    </div>
   );
 };
 

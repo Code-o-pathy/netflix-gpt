@@ -2,6 +2,7 @@ import React from "react";
 import MovieCard from "./MovieCard";
 
 const MovieList = ({ title, movies }) => {
+  
   if (!movies) return;
   return (
     <div className="p-6 ">

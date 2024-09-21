@@ -16,9 +16,9 @@ const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const handleLanguage=(e)=>{
+  const handleLanguage = (e) => {
     dispatch(toggleLanguage(e.target.value));
-  }
+  };
 
   const handleGPT = () => {
     dispatch(toggleSearchView());
@@ -62,28 +62,35 @@ const Header = () => {
     return () => unsubscribe();
   }, []);
   return (
-    <div className="w-full bg-gradient-to-b from-black flex justify-between items-center  absolute z-10">
-      <img className="w-44 overflow-x-scroll" src={Logo} alt="logo" />
+    <div className="absolute w-full bg-gradient-to-b from-black flex justify-between items-center   z-10 flex-col md:flex-row ">
+      <img className="w-44 overflow-x-scroll mb-3" src={Logo} alt="logo" />
       {user && (
         <div className="flex mr-4">
-          { (gptState)  && <select onChange={handleLanguage} className="px-4 py-2 bg-purple-200  mx-2 rounded-md">
-            {SUPPORTED_LANG.map((option) => ( 
-              <option key={option.identifier} value={option.identifier}>{option.name}</option>
-            ))}
-          </select>}
+          {gptState && (
+            <select
+              onChange={handleLanguage}
+              className="px-4 py-2 bg-purple-200  mx-2 rounded-md"
+            >
+              {SUPPORTED_LANG.map((option) => (
+                <option key={option.identifier} value={option.identifier}>
+                  {option.name}
+                </option>
+              ))}
+            </select>
+          )}
           <button
             onClick={handleGPT}
-            className="px-4 py-2 bg-purple-400 mr-2 rounded-md"
+            className="px-4 py-2 bg-purple-400 mx-2 rounded-md"
           >
-            GPT Search
+            {gptState ? <>Homepage</> : <>GPT Search</>}
           </button>
           <img
-            className="w-[50px] mr-9 rounded-md "
+            className="w-[70px] mx-2 rounded-md  md:w-[50px]"
             alt="userIcon "
             src={user.photo}
           />
           <button
-            className="px-4 py-2 bg-zinc-500 text-red-900 font-bold  rounded-md"
+            className="px-4   mx-2 bg-zinc-500 text-red-900 font-bold  rounded-md"
             onClick={handleSignOut}
           >
             Sign Out
