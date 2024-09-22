@@ -85,8 +85,6 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log("signin-user");
-          console.log(user);
           navigate("/browse");
           // ...
         })

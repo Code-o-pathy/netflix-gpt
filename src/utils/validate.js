@@ -5,8 +5,8 @@ export const checkValidation = (email, password) => {
       password
     );
 
-  if (!isPassword) return "Password Invalid";
-  if (!isEmail) return "Email Invalid";
+  if (!isPassword) return "Password Invalid-Capital letter,number, and special character";
+  if (!isEmail) return "Email Invalid -@gmail.com required";
 
   return null;
 };
@@ -19,8 +19,8 @@ export const nameValidation = (name, email, password) => {
       password
     );
 
-  if (!isPassword) return "Password Invalid";
-  if (!isEmail) return "Email Invalid";
+  if (!isPassword) return "(Capital letter,number, and special character)";
+  if (!isEmail) return "Email Invalid(@gmail.com required)";
   if (!isName) return "Name Invalid";
   return null;
 };

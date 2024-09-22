@@ -28,7 +28,6 @@ const GptSearchBar = () => {
     // console.log(json.results);
   };
   const handleGPTSearch = async () => {
-    console.log(searchText.current.value);
     const query =
       "Act as a Movie Recommendation System and suggest 6 movies of the type :" +
       searchText.current.value +
@@ -37,7 +36,6 @@ const GptSearchBar = () => {
     const prompt = query;
 
     const result = await model.generateContent([prompt]);
-    console.log(result.response.text().split(","));
 
     const arrayOfMovies = result.response.text().split(",");
 
@@ -48,7 +46,6 @@ const GptSearchBar = () => {
     //this will return just promises,
 
     const tmdbResult = await Promise.all(promiseArray);
-    console.log(tmdbResult);
     dispatch(
       addSuggestedMovies({
         movieNames: arrayOfMovies,
