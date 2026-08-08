@@ -125,7 +125,7 @@ const Login = () => {
         <input
           ref={email}
           type="text"
-          placeholder="Email or mobile number"
+          placeholder="Email Address"
           className=" p-2 my-4  rounded-sm bg-gray-700  w-full"
         />
         <input
@@ -144,7 +144,7 @@ const Login = () => {
         </button>
         <p onClick={handleSign} className="py-2  my-4  w-full cursor-pointer">
           {isSignIn
-            ? "New to Netflix? Sign Up Now!"
+            ? "New to CineMatch? Sign Up Now!"
             : "Already a User? Sign In Now!"}
         </p>
       </form>

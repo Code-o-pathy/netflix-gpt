@@ -23,6 +23,14 @@ const Header = () => {
   const handleGPT = () => {
     dispatch(toggleSearchView());
   };
+
+  const handleLogoClick = () => {
+    if (gptState) {
+      dispatch(toggleSearchView());
+    }
+    navigate("/browse");
+  };
+
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {})
@@ -30,12 +38,10 @@ const Header = () => {
         // An error happened.
       });
   };
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/auth.user
-
         const { uid, name, email, photoURL } = user;
         dispatch(
           addUser({
@@ -46,24 +52,23 @@ const Header = () => {
           })
         );
         navigate("/browse");
-        //we couldn't use navigate in body component because this is the parent component of routerprovider, and all pages are child of this component, so if u want to use navigate here you would have to shift router provider on app level, second it to usenormaal redirection without navigate and other ssolution is to use navigate from child components
-
-        // ...
       } else {
-        // User is signed out
-        // ...
         dispatch(removeUser());
         navigate("/");
       }
     });
 
-    //unsubscribe when component is removed from dom.
-
     return () => unsubscribe();
   }, []);
+
   return (
     <div className=" absolute w-screen bg-gradient-to-b from-black flex justify-between items-center   z-40 flex-col md:flex-row ">
-      <img className="w-44  " src={Logo} alt="logo" />
+      <img
+        className="w-44 cursor-pointer"
+        src={Logo}
+        alt="logo"
+        onClick={handleLogoClick}
+      />
       {user && (
         <div className="flex">
           {gptState && (
@@ -78,19 +83,21 @@ const Header = () => {
               ))}
             </select>
           )}
-          <button
-            onClick={handleGPT}
-            className="md:px-4 md:py-2 bg-purple-400 md:mx-2 rounded-md px-2 mx-0"
-          >
-            {gptState ? <>Homepage</> : <>GPT Search</>}
-          </button>
+          {!gptState && (
+            <button
+              onClick={handleGPT}
+              className="md:px-4 md:py-2 bg-red-600 hover:bg-red-700 text-white md:mx-2 rounded-md px-2 mx-0 transition-colors"
+            >
+              Ask CineMatch
+            </button>
+          )}
           <img
             className="w-[70px] md:mx-2 rounded-md  md:w-[50px]  md:px-0 px-2"
             alt="userIcon "
             src={user.photo}
           />
           <button
-            className="md:px-4   md:mx-2 bg-gray-300 text-red-600 font-bold  rounded-md px-2"
+            className="md:px-4   md:mx-2 bg-white hover:bg-gray-200 text-red-600 font-bold  rounded-md px-2 transition-colors"
             onClick={handleSignOut}
           >
             Sign Out
